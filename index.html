@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historia del Mural</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fcfcfc;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #666666;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px 60px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 24px;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      background: #eff6ff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #111;
+      margin-bottom: 8px;
+    }
+    .author {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .audio-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 28px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .audio-card p {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    audio {
+      width: 100%;
+      height: 40px;
+      outline: none;
+    }
+    .content p {
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      color: #333;
+    }
+    .image-block {
+      margin: 28px 0;
+    }
+    .image-block img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      background: #eee;
+    }
+    .image-block figcaption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 6px;
+      text-align: center;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <header>
+      <span class="tag">Mural Comunitario</span>
+      <h1>La puesta del mayo</h1>
+      <p class="author">Pintado en 2026 · Iniciativa popular</p>
+    </header>
+
+    <!-- Reproductor de audio opcional -->
+    <section class="audio-card">
+      <p>🎧 Escucha la narración (1 min):</p>
+      <audio controls preload="metadata">
+        <source src="audio.mp3" type="audio/mpeg">
+        Tu navegador no soporta reproducción de audio.
+      </audio>
+    </section>
+
+    <!-- Contenido y relato -->
+    <article class="content">
+      <p>
+        Este mural rinde homenaje a la tradición de la puesta del mayo en nuestro pueblo.
+      </p>
+
+      <figure class="image-block">
+        <img src="foto-proceso.jpg" alt="Vecinos pintando el mural">
+        <figcaption>Proceso de pintura del mural</figcaption>
+      </figure>
+
+      <p>
+        En la parte central se puede observar el arbol siendo levantado.
+      </p>
+    </article>
+
+    <footer>
+      <p>Pueblo de La Aguilera</p>
+    </footer>
+  </main>
+
+</body>
+</html>
