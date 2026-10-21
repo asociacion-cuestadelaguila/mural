@@ -3,150 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historia del Mural</title>
+  <title>La puesta del mayo · Mural de La Aguilera</title>
+  <meta name="description" content="La historia detrás del mural comunitario de La Aguilera: la tradición de poner el mayo, pintada por los vecinos en 2026.">
+  <meta property="og:title" content="La puesta del mayo · Mural de La Aguilera">
+  <meta property="og:image" content="img/mural-final.jpg">
+  <link rel="icon" href="img/logo-cuesta-del-aguila.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
+    /* Paleta tomada del propio mural y del logo */
     :root {
-      --bg: #fcfcfc;
-      --card: #ffffff;
-      --text: #1a1a1a;
-      --muted: #666666;
-      --accent: #2563eb;
-      --border: #e5e7eb;
+      --cielo: #eef4fa;      /* cielo lavado */
+      --cielo-vivo: #4f8fcb; /* azul del mural */
+      --ocre: #e3a85f;       /* fachada */
+      --arena: #f6e6cf;      /* suelo de la plaza */
+      --vino: #7d1f31;       /* granate del logo */
+      --tinta: #2a0d12;      /* granate casi negro */
+      --texto: #3a2a2c;
+      --display: 'Oswald', 'Arial Narrow', Impact, sans-serif;
+      --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 24px 16px 60px;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--texto);
+      background: var(--cielo);
     }
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
+    img, video { max-width: 100%; display: block; }
+    a { color: var(--vino); }
+    :focus-visible { outline: 3px solid var(--ocre); outline-offset: 3px; }
+    .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+    h1, h2, h3 { font-family: var(--display); font-weight: 700; text-transform: uppercase; line-height: 1.02; color: var(--tinta); letter-spacing: .01em; }
+    h2 { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 20px; }
+    p + p { margin-top: 1.1em; }
+
+    /* PORTADA: el mayo es la diagonal que corta la foto */
+    .hero { position: relative; color: #fff; background: var(--tinta); overflow: hidden; }
+    .hero img.fondo { width: 100%; height: min(88vh, 760px); object-fit: cover; object-position: 50% 55%; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(42,13,18,.92) 5%, rgba(125,31,49,.45) 45%, rgba(42,13,18,0) 75%);
     }
-    header {
-      margin-bottom: 24px;
+    .hero .texto { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: 0 20px 96px; }
+    .hero .texto > div { max-width: 680px; margin: 0 auto; }
+    .hero .lugar { font-family: var(--display); font-weight: 500; font-size: 1rem; letter-spacing: .08em; color: var(--ocre); margin-bottom: 8px; }
+    .hero h1 { color: #fff; font-size: clamp(3.4rem, 17vw, 7rem); }
+    .hero .sub { margin-top: 14px; font-style: italic; font-size: 1.15rem; max-width: 30ch; color: #f6e6cf; }
+    .hero::after {
+      content: ""; position: absolute; z-index: 3; left: 0; right: 0; bottom: -1px; height: 70px;
+      background: var(--cielo); clip-path: polygon(0 100%, 100% 100%, 100% 0);
     }
-    .tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent);
-      background: #eff6ff;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 12px;
+
+    section { padding: 56px 0; }
+    section.arena { background: var(--arena); }
+    section.vino { background: var(--vino); color: #f6e6cf; }
+    section.vino h2, section.vino h3 { color: #fff; }
+
+    /* Audio */
+    .audio { margin-top: 32px; padding: 14px 16px; background: #fff; border-left: 6px solid var(--ocre); }
+    .audio p { font-family: var(--display); font-weight: 500; letter-spacing: .04em; font-size: 1rem; margin-bottom: 6px; color: var(--tinta); }
+    .audio audio { width: 100%; }
+
+    /* Vídeo vertical */
+    .video-box { max-width: 360px; margin: 28px auto 0; background: var(--tinta); border: 8px solid var(--tinta); border-radius: 22px; overflow: hidden; }
+    .video-box video { width: 100%; aspect-ratio: 464 / 832; background: #000; }
+    .nota-video { text-align: center; font-size: .95rem; margin-top: 12px; color: #e9cfa8; }
+
+    /* Proceso: tira horizontal de fotos */
+    .tira { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 20px 18px; -webkit-overflow-scrolling: touch; }
+    .tira figure { flex: 0 0 82%; max-width: 520px; scroll-snap-align: center; }
+    .tira img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #ddd; }
+    .tira figcaption { font-size: .95rem; margin-top: 8px; }
+    .tira figcaption b { font-family: var(--display); font-weight: 700; letter-spacing: .04em; color: var(--vino); text-transform: uppercase; margin-right: 6px; }
+    .grupo { margin-top: 36px; }
+    .grupo img { width: 100%; }
+    .grupo p { font-size: .95rem; margin-top: 8px; }
+
+    /* Qué se ve en el mural */
+    .detalles { list-style: none; margin-top: 8px; }
+    .detalles li { padding: 12px 0; border-top: 1px solid rgba(42,13,18,.18); }
+    .detalles li:last-child { border-bottom: 1px solid rgba(42,13,18,.18); }
+    .detalles strong { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--vino); }
+
+    /* Historia de la tradición */
+    .historia blockquote { margin: 28px 0; padding-left: 18px; border-left: 6px solid var(--ocre); font-style: italic; font-size: 1.2rem; color: #fff; }
+    .historia .dato { margin-top: 28px; padding: 16px 18px; background: rgba(0,0,0,.22); font-size: 1rem; }
+
+    /* Pie */
+    footer { background: #fff; text-align: center; padding: 40px 20px 48px; font-size: .95rem; color: #6b5a5c; }
+    footer img { width: 170px; margin: 0 auto 12px; }
+    footer p + p { margin-top: .4em; }
+
+    @media (min-width: 760px) {
+      body { font-size: 1.18rem; }
+      .tira { padding-left: calc(50vw - 340px); padding-right: 20px; }
+      .tira figure { flex-basis: 440px; }
     }
-    h1 {
-      font-size: 1.85rem;
-      font-weight: 800;
-      line-height: 1.2;
-      color: #111;
-      margin-bottom: 8px;
-    }
-    .author {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .audio-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 28px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    }
-    .audio-card p {
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    audio {
-      width: 100%;
-      height: 40px;
-      outline: none;
-    }
-    .content p {
-      font-size: 1.05rem;
-      margin-bottom: 18px;
-      color: #333;
-    }
-    .image-block {
-      margin: 28px 0;
-    }
-    .image-block img {
-      width: 100%;
-      border-radius: 12px;
-      display: block;
-      background: #eee;
-    }
-    .image-block figcaption {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 6px;
-      text-align: center;
-    }
-    footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: center;
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
 
-  <main class="container">
-    <header>
-      <span class="tag">Mural Comunitario</span>
-      <h1>La puesta del mayo</h1>
-      <p class="author">Pintado en 2026 · Iniciativa popular</p>
-    </header>
+  <header class="hero">
+    <img class="fondo" src="img/mural-final.jpg" alt="El mural terminado: vecinos levantando el mayo en una plaza, sobre la fachada de una casa de La Aguilera">
+    <div class="texto">
+      <div>
+        <p class="lugar">Mural comunitario · La Aguilera · 2026</p>
+        <h1>La puesta del mayo</h1>
+        <p class="sub">Un pueblo entero levantando un árbol, pintado por su gente.</p>
+      </div>
+    </div>
+  </header>
 
-    <!-- Reproductor de audio opcional -->
-    <section class="audio-card">
-      <p>🎧 Escucha la narración (1 min):</p>
-      <audio controls preload="metadata">
-        <source src="audio.mp3" type="audio/mpeg">
-        Tu navegador no soporta reproducción de audio.
-      </audio>
+  <main>
+
+    <!-- INTRODUCCIÓN -->
+    <section>
+      <div class="wrap">
+        <p>Este mural rinde homenaje a la tradición de la puesta del mayo en nuestro pueblo.</p>
+        <p>En la parte central se puede observar el árbol siendo levantado: un grupo de vecinos lo empuja con las manos en alto, otros tiran desde la escalera, y sobre la plaza cuelga una pancarta que dice «Viva Quintos».</p>
+
+        <!-- Reproductor de audio opcional: sube audio.mp3 junto a este archivo para activarlo -->
+        <div class="audio">
+          <p>🎧 Escucha la narración (1 min)</p>
+          <audio controls preload="metadata">
+            <source src="audio.mp3" type="audio/mpeg">
+            Tu navegador no soporta reproducción de audio.
+          </audio>
+        </div>
+      </div>
     </section>
 
-    <!-- Contenido y relato -->
-    <article class="content">
-      <p>
-        Este mural rinde homenaje a la tradición de la puesta del mayo en nuestro pueblo.
-      </p>
+    <!-- VÍDEO -->
+    <section class="vino">
+      <div class="wrap">
+        <h2>Cinco días pintando</h2>
+        <p>Entre vecinos y vecinas, niños y adultos, el mural se pintó en cinco días junto a un estudio de Burgos especializado en murales colaborativos. Aquí tienes cómo fue.</p>
+        <div class="video-box">
+          <video controls playsinline preload="metadata" poster="img/video-poster.jpg">
+            <source src="video-mural.mp4" type="video/mp4">
+            Tu navegador no soporta vídeo.
+          </video>
+        </div>
+        <p class="nota-video">Vídeo del proceso del mural</p>
+      </div>
+    </section>
 
-      <figure class="image-block">
-        <img src="foto-proceso.jpg" alt="Vecinos pintando el mural">
-        <figcaption>Proceso de pintura del mural</figcaption>
-      </figure>
+    <!-- PROCESO EN FOTOS -->
+    <section>
+      <div class="wrap">
+        <h2>Del dibujo al color</h2>
+        <p>Primero se dibujó el contorno sobre la pared blanca. Después, entre todos, fue entrando el color: el cielo, la fachada, los árboles y, por último, las personas.</p>
+      </div>
+      <div class="tira" aria-label="Fotos del proceso, desliza para ver más">
+        <figure><img src="img/dia1.jpg" loading="lazy" alt="Niños y adultos pintando el mural sobre el dibujo a línea"><figcaption><b>Día 1</b>El dibujo a línea y las primeras manos de pintura.</figcaption></figure>
+        <figure><img src="img/dia2.jpg" loading="lazy" alt="Una pintora agachada junto a la pared con el contorno ya dibujado"><figcaption><b>Días 1 y 2</b>Cielo azul y fachada de color ocre.</figcaption></figure>
+        <figure><img src="img/dia3.jpg" loading="lazy" alt="El mural casi terminado bajo un cielo nublado"><figcaption><b>Día 3</b>Cobran color los vecinos, el banco y los árboles.</figcaption></figure>
+        <figure><img src="img/mural-final.jpg" loading="lazy" alt="El mural terminado al atardecer"><figcaption><b>Final</b>El mayo, ya en pie sobre la plaza.</figcaption></figure>
+      </div>
+    </section>
 
-      <p>
-        En la parte central se puede observar el arbol siendo levantado.
-      </p>
-    </article>
+    <!-- QUÉ SE VE -->
+    <section class="arena">
+      <div class="wrap">
+        <h2>Mira bien el mural</h2>
+        <ul class="detalles">
+          <li><strong>El mayo.</strong> El tronco cruza la pared en diagonal, sujeto con cuerdas, mientras lo levantan entre muchos.</li>
+          <li><strong>Viva Quintos.</strong> La pancarta saluda a los quintos, protagonistas de la puesta del mayo.</li>
+          <li><strong>El árbol con cintas.</strong> A la izquierda, junto a la farola, un árbol lleno de cintas de colores.</li>
+          <li><strong>La plaza.</strong> Un banco, dos vecinos charlando, las flores y las casas de siempre, con sus ventanas.</li>
+          <li><strong>Las ventanas del mural.</strong> Los dos recuadros reales de la pared tienen pegadas pequeñas pinturas de paisaje.</li>
+        </ul>
+        <figure class="grupo">
+          <img src="img/dia1.jpg" loading="lazy" alt="Grupo de niños, jóvenes y adultos pintando juntos el mural">
+          <figcaption><p>Más de una docena de manos pintando a la vez: así se hizo el mural.</p></figcaption>
+        </figure>
+      </div>
+    </section>
 
-    <footer>
-      <p>Pueblo de La Aguilera</p>
-    </footer>
+    <!-- HISTORIA DE LA TRADICIÓN -->
+    <!--
+      ✏️ TEXTO PROVISIONAL. Todo este bloque está rellenado con información general
+      sobre «poner el mayo» en Castilla (no es específico de La Aguilera).
+      Cuando tengas los relatos de los vecinos, sustituye los párrafos de abajo
+      (cuándo se hace, qué árbol se usa, quién lo corta, cómo se levanta, canciones, etc.).
+    -->
+    <section class="vino historia">
+      <div class="wrap">
+        <h2>La tradición de poner el mayo</h2>
+
+        <p>El mayo es un árbol o un tronco alto y derecho —en muchos sitios un pino o un chopo— que los jóvenes del pueblo cortan en el monte, traen hasta la plaza y levantan entre todos. Se hace en la víspera del 1 de mayo o ese mismo día, para dar la bienvenida a la primavera.</p>
+
+        <p>Los protagonistas son los quintos: los jóvenes que ese año cumplen la mayoría de edad. Antiguamente eran los chicos que entraban en quintas para el servicio militar; hoy la tradición se ha abierto y participan también las quintas. Levantar el mayo es, de algún modo, su entrada en la vida adulta del pueblo.</p>
+
+        <p>Según la costumbre de cada lugar, el mayo queda en pie en la plaza durante todo el mes. En algunos pueblos se adorna con cintas, banderas o flores, y en otros la noche del 30 de abril los mozos cantaban «los mayos» a las mozas, también como forma de cortejo. Es una fiesta muy antigua, ligada al culto al árbol, a la fertilidad y al despertar de la naturaleza.</p>
+
+        <!-- ✏️ AQUÍ: cómo se vive en La Aguilera (fecha, árbol, quién lo corta, anécdotas de los mayores…) -->
+        <p class="dato"><strong>Y en La Aguilera…</strong> pronto añadiremos aquí los recuerdos de nuestros vecinos: cómo se ponía el mayo antes y cómo se pone ahora.</p>
+      </div>
+    </section>
+
+    <!-- EL PUEBLO -->
+    <section>
+      <div class="wrap">
+        <h2>La Aguilera</h2>
+        <p>Pequeño pueblo de la Ribera del Duero, en Burgos, a pocos kilómetros de Aranda de Duero. Está rodeado de viñedos y bodegas excavadas en la ladera, con el cerro de La Malagueña como mirador de toda la comarca.</p>
+        <p>Su patrón es San Pedro Regalado, cuyo santuario se encuentra en el pueblo, y sus fiestas se celebran en mayo, el 13, además de las de verano. Mayo, aquí, es un mes de plaza y de vecinos.</p>
+      </div>
+    </section>
+
   </main>
+
+  <footer>
+    <img src="img/logo-cuesta-del-aguila.png" alt="Logotipo Cuesta del Águila">
+    <p>Pueblo de La Aguilera · Mural pintado en 2026</p>
+    <p><!-- ✏️ Créditos: nombre del estudio de Burgos, colaboradores, patrocinadores --></p>
+  </footer>
 
 </body>
 </html>
